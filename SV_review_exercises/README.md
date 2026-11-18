@@ -15,3 +15,15 @@
    and must produce srst_n, which asserts asynchronously but deasserts synchronously with 
    clk. Use a two-flip-flop chain. Then, use srst_n to reset an 8-bit register q that loads
    d on every clock edge.
+6. Design a parameterizable N-bit counter whose output is in Gray code. Internally, keep a
+   binary counter and convert it to Gray code. Include a synchronous active-high reset and
+   an enable signal. Also provide a function that converts Gray code back to binary, and 
+   use it in a separate output bin_out for debugging.
+7. Design a CDC module that transfers a single-bit pulse from clock domain clk_a to clock 
+   domain clk_b, where the two clocks are asynchronous. Use a toggle synchronizer: convert 
+   the pulse into a toggle in the source domain, synchronize the toggle with a 
+   two-flip-flop chain in the destination domain, and detect the edge to regenerate the 
+   pulse. Assume pulses in clk_a are separated by enough cycles for the transfer to 
+   complete.
+
+   Missing: mealy machine, interfaces, enum pointers
