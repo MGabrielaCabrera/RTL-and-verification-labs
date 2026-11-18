@@ -8,7 +8,7 @@ module counter4 (
   input  logic       enable,
   output logic [3:0] count
 );
-    always_ff @(posedge clk || posedge reset) begin
+    always_ff @(posedge clk or posedge reset) begin
         if (reset)
             count <= 4'd0;
         else if (enable)
