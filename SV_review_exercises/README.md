@@ -25,5 +25,17 @@
    two-flip-flop chain in the destination domain, and detect the edge to regenerate the 
    pulse. Assume pulses in clk_a are separated by enough cycles for the transfer to 
    complete.
+8. Mealy FSM for a vending machine that sells one product for 15 cents. It accepts only 
+   nickels (5 cents) and dimes (10 cents), never both in the same cycle. 
+   The output dispense must go high in the same cycle in which the coin that completes 
+   (or exceeds) 15 cents is inserted. After dispensing, the machine returns to the initial 
+   state. No change is given back. Use an enumerated type and a synchronous active-high 
+   reset.
+9. Create a stream_if interface with a valid/ready handshake carrying a parameterizable-width
+   data bus. Define two modports, source and sink. Then design a producer module that sends 
+   the values 0, 1, 2, ... (one per transfer), and a consumer module that accumulates the 
+   received values into a sum register. A transfer happens on a clock edge where both valid 
+   and ready are high. The consumer’s ready is driven by an external stall input 
+   (ready = ~stall). Connect everything in a top module.
 
-   Missing: mealy machine, interfaces, enum pointers
+   Missing: enum pointers, pulse synchronizer
