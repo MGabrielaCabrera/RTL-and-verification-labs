@@ -37,5 +37,11 @@
    received values into a sum register. A transfer happens on a clock edge where both valid 
    and ready are high. The consumer’s ready is driven by an external stall input 
    (ready = ~stall). Connect everything in a top module.
+10. Design a traffic light controller whose states are an enum RED, GREEN, YELLOW. Each state
+    lasts a different number of clock cycles (RED = 6, GREEN = 4, YELLOW = 2). When the timer
+    expires, advance to the following state using the enum method next() (no case for the 
+    transitions). Then write a testbench-style initial block that: (1) iterates over all the 
+    enum values using first(), next() and num() and prints each one with name(), and (2) 
+    prints the state on every clock cycle for 30 cycles.
 
    Missing: enum pointers, pulse synchronizer

@@ -27,12 +27,13 @@ module seq_detector (
   end
 
   always_comb begin
-    unique case (state)
+    case (state)
         S_IDLE: next_state = din ? S_1: S_IDLE;
         S_1:    next_state = din ? S_1: S_10;
         S_10:   next_state = din ? S_101: S_IDLE;
         S_101:  next_state = din ? S_1011: S_10;
         S_1011: next_state = din ? S_1: S_10;
+        default next_state = S_IDLE;
     endcase
   end
 
