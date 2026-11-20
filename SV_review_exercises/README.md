@@ -43,5 +43,10 @@
     transitions). Then write a testbench-style initial block that: (1) iterates over all the 
     enum values using first(), next() and num() and prints each one with name(), and (2) 
     prints the state on every clock cycle for 30 cycles.
+11. Design a parameterizable synchronous FIFO with DATA_WIDTH bits and DEPTH entries (DEPTH
+    is a power of two). It has a single clock, a synchronous active-high reset, write enable 
+    wr_en, read enable rd_en, and flags full and empty. A write when full and a read when 
+    empty must be ignored. The read data rd_data must show the oldest element combinationally 
+    (mem[rd_ptr]), so the data is available in the same cycle in which empty is low. Also 
+    provide an output count with the number of stored elements.
 
-   Missing: enum pointers, pulse synchronizer
