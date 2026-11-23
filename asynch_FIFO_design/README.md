@@ -15,7 +15,6 @@ Implement a parameterizable asynchronous FIFO with the following parameters:
 | Parameter | Description | Default |
 |---|---|---|
 | `DATA_WIDTH` | Data width in bits | 8 |
-| `ADDR_WIDTH` | Address width (FIFO depth = 2^ADDR_WIDTH) | 4 |
 | `DEPTH` | FIFO depth | 16 |
 
 ### Interface
@@ -24,7 +23,8 @@ Implement a parameterizable asynchronous FIFO with the following parameters:
 |---|---|---|
 | `wr_clk` | Input | Write clock |
 | `rd_clk` | Input | Read clock |
-| `rst_n` | Input | Active-low reset |
+| `wr_rst_n` | Input | Write Active-low reset |
+| `rd_rst_n` | Input | Read Active-low reset |
 | `wr_en` | Input | Write enable |
 | `wr_data` | Input | Input data |
 | `full` | Output | FIFO full flag |
@@ -52,20 +52,4 @@ Implement a parameterizable asynchronous FIFO with the following parameters:
 - Synchronize the Gray-coded read pointer into the write clock domain.
 - Use two-stage synchronizer registers for each pointer crossing.
 
-### Status Flags
-- Generate the `empty` flag in the read clock domain.
-- Generate the `full` flag in the write clock domain.
-- Use synchronized pointers to determine FIFO status.
-
-## 4. Implementation Constraints
-
-1. Use separate `always_ff` blocks for write and read logic.
-2. Use non-blocking assignments (`<=`) for sequential logic.
-3. Use independent clocked processes for each clock domain.
-4. Implement binary-to-Gray conversion using:
-
-   `gray = binary ^ (binary >> 1)`
-
-5. Implement Gray-to-binary conversion if needed.
-6. Ensure pointer synchronizers are correctly reset.
-7. Avoid directly synchronizing multi-bit binary pointers.
+![Pointer diagram](Pointer_diagram.png)
